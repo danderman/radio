@@ -2,6 +2,7 @@
 
 {% block content %}
 <h2>{{episode}}</h2>
+<a href="/logger/addsegment/{{episode.id}}">Add Segment</a>
 <ul>
   {% for segment in segment_list %}
   <li> {{ segment }} </li>

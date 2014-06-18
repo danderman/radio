@@ -1,6 +1,6 @@
 from django.db.models import Model, CharField, DateField, TimeField, ForeignKey
 from durationfield.db.models.fields.duration import DurationField
-
+from django.core.urlresolvers import reverse
 
 class Show(Model):
     title = CharField(max_length=80, unique=True)
@@ -34,4 +34,7 @@ class Segment(Model):
 
     def __str__(self):
         return "%s %s %s" % (self.song.title, self.episode.show.title, self.time)
+
+    def get_absolute_url(self):
+      return reverse('edit-episode', kwargs={'pk':self.episode.id})
 

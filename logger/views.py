@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from logger.models import Show, Episode, Segment, Song
+from django import forms
 
 class ListShowView(ListView):
     model = Show
@@ -31,3 +32,8 @@ class EditEpisodeView(ListView):
         ctx = super(EditEpisodeView, self).get_context_data(**kwargs)
         ctx['episode'] = self.ep
         return ctx
+
+class AddSegmentView(CreateView):
+    template_name = "add_segment.html"
+
+    model = Segment

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{episode}}</h2>
+<form action="{{action}}" method="POST">
+  {% csrf_token %}
+<ul>
+  {{ form.as_ul }}
+</ul>
+<input type="submit">
+</form>
+{% endblock %}

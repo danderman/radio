@@ -1,13 +1,45 @@
 {% load staticfiles %}
+<!DOCTYPE html>
 <html>
   <head>
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}"
           rel="stylesheet" media="screen">
+          <style>.navbar-right li a{padding:5px}.navbar-left li a{padding:10px 15px}#main,#leftbar{height:100%}</style>
   </head>
 
   <body>
+    <div class="navbar-inverse" style="border-radius:0">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <h5>CHCR Logging</h4>
+        </div>
+    {% block header %}
+    <div class="navbar-collapse collapse">
+       <ul class="nav navbar-nav navbar-right">
+       <li><a href="#">Top</a></li>
+       <li><a href="#">Links</a></li>
+       <li><a href="#">Here</a></li>
+       </ul>
+    </div>
+    {% endblock %}
+      </div>
+    </div>
+    <div id="main">
+    <div id="leftbar" class="navbar navbar-inverse navbar-left col-sm-2" style="border-width:0;border-radius:0">
+    {% block leftbar %}
+       <img class="img-responsive img-circle" src="{% static 'bw_logosm.png' %}">
+       <ul class="nav navbar-nav">
+       <li><a href="#">Left</a></li>
+       <li><a href="#">Links</a></li>
+       <li><a href="#">Here</a></li>
+       </ul>
+    {% endblock %}
+    </div> 
+    <div class="col-sm-10">
     {% block content %}
     {% endblock %}
+  </div>
+</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
